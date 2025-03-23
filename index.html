@@ -1,10 +1,41 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <title>materias</title>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio de Disciplinas</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
+<body>
+
+    <header>
+        <div class="logo">
+            <h1>Portfólio de Disciplinas</h1>
+        </div>
+        
+        <nav class="menu">
+            <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+            <ul id="disciplinas-menu" class="menu-list">
+                <li><a href="disciplina1.html">Disciplina 1</a></li>
+                <li><a href="disciplina2.html">Disciplina 2</a></li>
+                <li><a href="disciplina3.html">Disciplina 3</a></li>
+                <li><a href="disciplina4.html">Disciplina 4</a></li>
+            </ul>
+        </nav>
+        
+        <div class="search">
+            <input type="text" placeholder="Pesquisar...">
+        </div>
+    </header>
+
+    <nav class="second-menu">
+        <ul>
+            <li><a href="#">Conteúdo 1</a></li>
+            <li><a href="#">Conteúdo 2</a></li>
+            <li><a href="#">Conteúdo 3</a></li>
+        </ul>
+    </nav>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
