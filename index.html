@@ -9,43 +9,57 @@
 </head>
 <body>
 
-
+    
     <header>
         <div class="logo">
             <h1>Portfólio de Disciplinas</h1>
         </div>
 
-       
+        
         <div class="search">
             <input type="text" placeholder="Pesquisar...">
         </div>
 
-       
-        <div class="hamburger" onclick="toggleMenu()">
-            <span class="material-icons">menu</span>
-        </div>
-
         
         <nav class="menu">
-            <ul id="disciplinas-menu" class="menu-list">
-                <li><a href="fisica.html">Física</a></li>
-                <li><a href="matematica.html">Matemática</a></li>
-                <li><a href="quimica.html">Química</a></li>
+            <ul>
+                <li><a href="#" onclick="showContent('matematica')">Matemática</a></li>
+                <li><a href="#" onclick="showContent('fisica')">Física</a></li>
+                <li><a href="#" onclick="showContent('quimica')">Química</a></li>
             </ul>
         </nav>
     </header>
 
-    
-    <nav class="second-menu">
-        <ul>
-            <li><a href="#">Conteúdo 1</a></li>
-            <li><a href="#">Conteúdo 2</a></li>
-            <li><a href="#">Conteúdo 3</a></li>
-        </ul>
-    </nav>
+
+    <div class="content">
+        <div id="matematica" class="discipline-content">
+            <h2>Matemática</h2>
+            <ul>
+                <li>Álgebra</li>
+                <li>Geometria</li>
+                <li>Cálculo</li>
+            </ul>
+        </div>
+        
+        <div id="fisica" class="discipline-content">
+            <h2>Física</h2>
+            <ul>
+                <li>Leis de Newton</li>
+                <li>Eletromagnetismo</li>
+                <li>Óptica</li>
+            </ul>
+        </div>
+        
+        <div id="quimica" class="discipline-content">
+            <h2>Química</h2>
+            <ul>
+                <li>Reações Químicas</li>
+                <li>Estrutura Atômica</li>
+                <li>Termodinâmica</li>
+            </ul>
+        </div>
+    </div>
 
     <script src="scripts.js"></script>
 </body>
 </html>
-
-

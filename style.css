@@ -1,12 +1,5 @@
-
-:root {
-    --cor-primaria: #493d9e;
-    --cor-secundaria: #a5ffda;
-    --cor-terciaria: #fffff2;
-    --cor-quaternaria: #af2f2f;
-}
-
-* {
+*
+ {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -18,90 +11,58 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    background-color: var(--cor-primaria);
-    color: var(--cor-secundaria);
+    background-color: #493d9e; 
+    color: #a5ffda; 
 }
 
 .logo h1 {
-    font-size: 1.8em;
+    font-size: 2em;
 }
 
 .search input {
     padding: 5px;
     border-radius: 5px;
-    border: 1px solid var(--cor-quaternaria);
+    border: 1px solid #af2f2f;
     font-size: 1em;
+    width: 200px;
 }
 
 
-.menu-list {
-    display: flex;
+nav ul {
     list-style: none;
+    display: flex;
 }
 
-.menu-list li {
+nav ul li {
     margin-left: 20px;
 }
 
-.menu-list a {
-    color: var(--cor-secundaria);
+nav ul li a {
     text-decoration: none;
+    color: #a5ffda; 
     font-size: 1.2em;
 }
 
 
-.hamburger {
+.content {
+    padding: 20px;
+    margin-top: 30px;
+}
+
+.discipline-content {
     display: none;
-    font-size: 2em;
-    cursor: pointer;
 }
 
-.material-icons {
-    font-size: 2rem;
-    color: var(--cor-secundaria);
+.discipline-content.active {
+    display: block;
 }
 
-
-.second-menu ul {
-    display: flex;
+.discipline-content ul {
     list-style: none;
-    margin-top: 20px;
+    padding-left: 20px;
 }
 
-.second-menu ul li {
-    margin-left: 20px;
+.discipline-content ul li {
+    margin: 5px 0;
 }
-
-.second-menu ul li a {
-    color: var(--cor-secundaria);
-    text-decoration: none;
-    font-size: 1.2em;
-}
-
-
-@media (max-width: 768px) {
-    .hamburger {
-        display: block;
-    }
-
-    .menu-list {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        background-color: var(--cor-primaria);
-        position: absolute;
-        top: 0;
-        left: 0;
-        padding: 20px;
-    }
-
-    .menu-list li {
-        margin: 10px 0;
-    }
-
-    .menu-list.active {
-        display: flex;
-    }
-}
-
 
