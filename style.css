@@ -1,16 +1,25 @@
-{
+
+:root {
+    --cor-primaria: #493d9e;
+    --cor-secundaria: #a5ffda;
+    --cor-terciaria: #fffff2;
+    --cor-quaternaria: #af2f2f;
+}
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: white;
+    padding: 20px;
+    background-color: var(--cor-primaria);
+    color: var(--cor-secundaria);
 }
 
 .logo h1 {
@@ -20,8 +29,10 @@ header {
 .search input {
     padding: 5px;
     border-radius: 5px;
-    border: none;
+    border: 1px solid var(--cor-quaternaria);
+    font-size: 1em;
 }
+
 
 .menu-list {
     display: flex;
@@ -29,20 +40,27 @@ header {
 }
 
 .menu-list li {
-    margin-left: 15px;
+    margin-left: 20px;
 }
 
 .menu-list a {
-    color: white;
+    color: var(--cor-secundaria);
     text-decoration: none;
     font-size: 1.2em;
 }
+
 
 .hamburger {
     display: none;
     font-size: 2em;
     cursor: pointer;
 }
+
+.material-icons {
+    font-size: 2rem;
+    color: var(--cor-secundaria);
+}
+
 
 .second-menu ul {
     display: flex;
@@ -55,10 +73,11 @@ header {
 }
 
 .second-menu ul li a {
-    color: #4CAF50;
+    color: var(--cor-secundaria);
     text-decoration: none;
     font-size: 1.2em;
 }
+
 
 @media (max-width: 768px) {
     .hamburger {
@@ -69,7 +88,7 @@ header {
         display: none;
         flex-direction: column;
         width: 100%;
-        background-color: #333;
+        background-color: var(--cor-primaria);
         position: absolute;
         top: 0;
         left: 0;
@@ -84,3 +103,5 @@ header {
         display: flex;
     }
 }
+
+
