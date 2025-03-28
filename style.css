@@ -1,4 +1,12 @@
 *
+:root{
+--azul-marinho: #205781;
+--turquesa: #4f959d;
+--verde-agua: #98D2C0;
+--bege: #f6f8d5;
+
+}
+
 {
     margin: 0;
     padding: 0; 
