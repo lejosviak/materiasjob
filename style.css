@@ -15,6 +15,11 @@ header {
     color: #f6f8d5; 
 }
 
+.logo h1 {
+    font-size: 2em;
+
+}
+
 .search input {
     padding: 5px;
     border-radius: 5px;
