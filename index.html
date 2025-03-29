@@ -3,63 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfólio de Disciplinas</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Portfólio de exatas</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
-    
     <header>
-        <div class="logo">
-            <h1>Portfólio de Disciplinas</h1>
-        </div>
-
-        
-        <div class="search">
-            <input type="text" placeholder="Pesquisar...">
-        </div>
-
-        
-        <nav class="menu">
-            <ul>
-                <li><a href="#" onclick="showContent('matematica')">Matemática</a></li>
-                <li><a href="#" onclick="showContent('fisica')">Física</a></li>
-                <li><a href="#" onclick="showContent('quimica')">Química</a></li>
-            </ul>
+        <label class="menu-label" onclick="toggleMenu()">Disciplinas</label>
+        <nav class="menu-disciplinas" id="menuDisciplinas">
+            <a onclick="mudarDisciplina('Matemática')">Matemática</a>
+            <a onclick="mudarDisciplina('Física')">Física</a>
+            <a onclick="mudarDisciplina('Química')">Química</a>
+        </nav>
+        <nav class="nav-links">
+            <a onclick="mostrarConteudo('atividades')">Atividades</a>
+            <a onclick="mostrarConteudo('provas')">Provas</a>
+            <a onclick="mostrarConteudo('projetos')">Projetos</a>
         </nav>
     </header>
-
-
     <div class="content">
-        <div id="matematica" class="discipline-content">
-            <h2>Matemática</h2>
+        <h1>Portfólio</h1>
+        <h2 id="disciplina">Matemática</h2>
+        <div id="conteudo">
+            <p>Bem-vindo ao conteúdo de Matemática.</p>
             <ul>
-                <li>Álgebra</li>
+                <li>Algebra</li>
                 <li>Geometria</li>
-                <li>Cálculo</li>
-            </ul>
-        </div>
-        
-        <div id="fisica" class="discipline-content">
-            <h2>Física</h2>
-            <ul>
-                <li>Leis de Newton</li>
-                <li>Eletromagnetismo</li>
-                <li>Óptica</li>
-            </ul>
-        </div>
-        
-        <div id="quimica" class="discipline-content">
-            <h2>Química</h2>
-            <ul>
-                <li>Reações Químicas</li> 
-                <li>Estrutura Atômica</li>
-                <li>Termodinâmica</li>
+                <li>Calculo</li>
             </ul>
         </div>
     </div>
+    <script>
+        function mudarDisciplina(nome) {
+            document.getElementById("disciplina").innerText = nome;
+            document.getElementById("conteudo").innerHTML = `<p>Bem-vindo ao conteúdo de ${nome}.</p>`;
+        }
 
-    <script src="scripts.js"></script>
+        function mostrarConteudo(tipo) {
+            let conteudo = document.getElementById("conteudo");
+            if (tipo === "atividades") {
+                conteudo.innerHTML = "<p>Atividades.</p>";
+            } else if (tipo === "provas") {
+                conteudo.innerHTML = "<p>Provas.</p>";
+            } else if (tipo === "projetos") {
+                conteudo.innerHTML = "<p>Projetos.</p>";
+            }
+        }
+
+        function toggleMenu() {
+            let menu = document.getElementById("menuDisciplinas");
+            menu.style.display = menu.style.display === "block" ? "none" : "block";
+        }
+    </script>
+     
 </body>
 </html>
+
+    
+    
