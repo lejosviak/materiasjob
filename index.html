@@ -1,59 +1,51 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfólio de exatas</title>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-    <link rel="stylesheet" href="styles.css">
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Portfólio de Disciplinas</title>
+ <link rel="stylesheet" href="styles.css">
+ <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <label class="menu-label" onclick="toggleMenu()">Disciplinas</label>
-        <nav class="menu-disciplinas" id="menuDisciplinas">
-            <a onclick="mudarDisciplina('Matemática')">Matemática</a>
-            <a onclick="mudarDisciplina('Física')">Física</a>
-            <a onclick="mudarDisciplina('Química')">Química</a>
-        </nav>
-        <nav class="nav-links">
-            <a onclick="mostrarConteudo('atividades')">Atividades</a>
-            <a onclick="mostrarConteudo('provas')">Provas</a>
-            <a onclick="mostrarConteudo('projetos')">Projetos</a>
-        </nav>
-    </header>
-    <div class="content">
-        <h1>Portfólio</h1>
-        <h2 id="disciplina">Matemática</h2>
-        <div id="conteudo">
-            <p>Bem-vindo ao conteúdo de Matemática.</p>
-        </div>
-    </div>
-    <script>
-        function mudarDisciplina(nome) {
-            document.getElementById("disciplina").innerText = nome;
-            document.getElementById("conteudo").innerHTML = `<p>Bem-vindo ao conteúdo de ${nome}.</p>`;
-        }
 
-        function mostrarConteudo(tipo) {
-            let conteudo = document.getElementById("conteudo");
-            if (tipo === "atividades") {
-                conteudo.innerHTML = "<p>Atividades.</p>";
-            } else if (tipo === "provas") {
-                conteudo.innerHTML = "<p>Provas.</p>";
-            } else if (tipo === "projetos") {
-                conteudo.innerHTML = "<p>Projetos.</p>";
-            }
-        }
+<header>
+  <div class="logo">
+    <h1>Portfólio de Disciplinas</h1>
+</div>
 
-        function toggleMenu() {
-            let menu = document.getElementById("menuDisciplinas");
-            menu.style.display = menu.style.display === "block" ? "none" : "block";
-        }
-    </script>
-     
+  <div class="search">
+    <input type="text" placeholder="Pesquisar...">
+</div>
+</header>
+
+ <nav class="menu">
+<ul>
+        <li><a href="#" onclick="showContent('matematica')">Matemática</a></li>
+        <li><a href="#" onclick="showContent('fisica')">Física</a></li>
+        <li><a href="#" onclick="showContent('quimica')">Química</a></li>
+</ul>
+</nav>
+
+  <section id="content">
+    <p>Selecione uma disciplina para ver mais informações.</p>
+</section>
+
+    <footer>
+      <p>&copy; 2025 Portfólio de Disciplinas. Todos os direitos reservados.</p>
+</footer>
+
+<script>
+function showContent(disciplina) {
+const content = document.getElementById("content");
+const textos = {
+matematica: "Matemática é a ciência dos números e padrões.",
+fisica: "Física estuda as leis fundamentais do universo.",
+quimica: "Química explora as propriedades e transformações da matéria.",
+};
+content.innerHTML = `<p>${textos[disciplina]}</p>`;
+}
+</script>
+
 </body>
 </html>
-
-    
-    
