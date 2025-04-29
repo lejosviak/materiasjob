@@ -25,12 +25,12 @@ header {
     background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
     padding: 20px;
     display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
     justify-content: space-between;
     align-items: center;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     position: relative;
-    flex-wrap: wrap;
-    gap: 15px;
 }
 
 .menu-label, .nav-links a {
@@ -74,7 +74,25 @@ header {
     background: var(--accent-color);
     color: var(--primary-color);
     border-radius: 5px;
+}
 
+.nav-links {
+    display: flex;
+    gap: 15px;
+}
+
+.search-bar {
+    margin-left: 10px;
+}
+
+.search-bar input {
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    background-color: var(--accent-color);
+    color: var(--primary-color);
 }
 
 .content {
@@ -84,24 +102,19 @@ header {
 
 .content h1 {
     font-size: 42px;
-    color: var(--accent-color);
+    color: var(--primary-color);
     margin-bottom: 10px;
 }
 
 .content h2 {
     font-size: 32px;
-    color: var(--primary-color);
+    color: var(--secondary-color);
 }
 
 #conteudo {
     margin-top: 20px;
     font-size: 20px;
     font-weight: 300;
-}
-
-.nav-links {
-    display: flex;
-    gap: 15px;
 }
 
 footer {
@@ -114,16 +127,25 @@ footer {
     padding: 10px;
 }
 
-.search-bar {
-    margin-left: 20px;
+#temas {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
 }
 
-.search-bar input {
-    padding: 8px 12px;
-    border-radius: 8px;
+.tema-btn {
+    padding: 10px 20px;
     border: none;
-    outline: none;
-    font-size: 16px;
-    background-color: var(--accent-color);
-    color: var(--primary-color);
+    border-radius: 8px;
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.tema-btn:hover {
+    background-color: var(--secondary-color);
 }

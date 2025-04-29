@@ -1,60 +1,97 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfólio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfólio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <header>
-      <div class="search-bar">
-        <input type="text" placeholder="Pesquisar..." oninput="pesquisarConteudo(this.value)">
-    </div>    
-        <label class="menu-label" onclick="toggleMenu()">Disciplinas</label>
-        <nav class="menu-disciplinas" id="menuDisciplinas">
-            <a onclick="mudarDisciplina('Matemática')">Matemática</a>
-            <a onclick="mudarDisciplina('Física')">Física</a>
-            <a onclick="mudarDisciplina('Química')">Química</a>
-        </nav>
-        <nav class="nav-links">
-            <a onclick="mostrarConteudo('atividades')">Atividades</a>
-            <a onclick="mostrarConteudo('provas')">Provas</a>
-            <a onclick="mostrarConteudo('projetos')">Projetos</a>
-        </nav>   
-    </header>
-    <div class="content">
-        <h1>Portfólio</h1>
-        <h2 id="disciplina">Matemática</h2>
-        <div id="conteudo">
-            <p>Bem-vindo ao conteúdo de Matemática.</p>
-        </div>
+  <header>
+    <label class="menu-label" onclick="toggleMenu()">Disciplinas</label>
+    <nav class="menu-disciplinas" id="menuDisciplinas">
+      <a href="#" onclick="mudarDisciplina('Matemática')">Matemática</a>
+      <a href="#" onclick="mudarDisciplina('Física')">Física</a>
+      <a href="#" onclick="mudarDisciplina('Química')">Química</a>
+    </nav>
+
+    <nav class="nav-links">
+      <a href="#" onclick="mostrarConteudo('atividades'); return false;">Atividades</a>
+      <a href="#" onclick="mostrarConteudo('provas'); return false;">Provas</a>
+      <a href="#" onclick="mostrarConteudo('projetos'); return false;">Projetos</a>
+    </nav>
+
+    <div class="search-bar">
+      <input type="text" placeholder="Pesquisar..." oninput="pesquisarConteudo(this.value)" />
     </div>
-    <script>
-        function mudarDisciplina(nome) {
-            document.getElementById("disciplina").innerText = nome;
-            document.getElementById("conteudo").innerHTML = `<p>Bem-vindo ao conteúdo de ${nome}.</p>`;
-        }
+  </header>
 
-        function mostrarConteudo(tipo) {
-            let conteudo = document.getElementById("conteudo");
-            if (tipo === "atividades") {
-                conteudo.innerHTML = "<p>Atividades.</p>";
-            } else if (tipo === "provas") {
-                conteudo.innerHTML = "<p>Provas.</p>";
-            } else if (tipo === "projetos") {
-                conteudo.innerHTML = "<p>Projetos.</p>";
-            }
-        }
+  <div class="content">
+    <h1>Portfólio</h1>
+    <h2 id="disciplina">Matemática</h2>
 
-        function toggleMenu() {
-            let menu = document.getElementById("menuDisciplinas");
-            menu.style.display = menu.style.display === "block" ? "none" : "block";
-        }
-    </script>
-     <footer>
-        <p>Desenvolvido pela aluna: Kamila, Lucas Iablonski, Gabriel Lopes, Rafael e Cristopher</p>
-   </footer>
+    <div id="temas"></div>
+
+    <div id="conteudo">
+      <p>Bem-vindo ao conteúdo de Matemática.</p>
+    </div>
+  </div>
+
+  <footer>
+    <p>Desenvolvido pela aluna: Kamila, Lucas Iablonski, Gabriel Lopes, Rafael e Cristopher</p>
+  </footer>
+
+  <script>
+    let disciplinaAtual = "Matemática";
+
+    const temasPorDisciplina = {
+      "Matemática": ["Álgebra", "Geometria", "Funções"],
+      "Física": ["Cinemática", "Dinâmica", "Ondulatória"],
+      "Química": ["Tabelas periódicas", "Ligações químicas", "Reações químicas"]
+    };
+
+    function mudarDisciplina(nome) {
+      disciplinaAtual = nome;
+      document.getElementById("disciplina").innerText = nome;
+      mostrarTemas(nome);
+      document.getElementById("conteudo").innerHTML = `<p>Bem-vindo ao conteúdo de ${nome}.</p>`;
+    }
+
+    function mostrarTemas(disciplina) {
+      const temasDiv = document.getElementById("temas");
+      const temas = temasPorDisciplina[disciplina];
+      temasDiv.innerHTML = temas.map(tema => `
+        <button class="tema-btn" onclick="mostrarTema('${disciplina}', '${tema}')">${tema}</button>
+      `).join("");
+    }
+
+    function mostrarTema(disciplina, tema) {
+      const conteudo = document.getElementById("conteudo");
+      conteudo.innerHTML = `<p><strong>${tema}</strong> é um tema importante em <strong>${disciplina}</strong>.</p>`;
+    }
+
+    function mostrarConteudo(tipo) {
+      const conteudo = document.getElementById("conteudo");
+      conteudo.innerHTML = `<p>${tipo.charAt(0).toUpperCase() + tipo.slice(1)} de ${disciplinaAtual}.</p>`;
+    }
+
+    function toggleMenu() {
+      const menu = document.getElementById("menuDisciplinas");
+      menu.style.display = menu.style.display === "block" ? "none" : "block";
+    }
+
+    function pesquisarConteudo(termo) {
+      const conteudo = document.getElementById("conteudo");
+      if (termo.trim() === "") {
+        conteudo.innerHTML = `<p>Bem-vindo ao conteúdo de ${disciplinaAtual}.</p>`;
+      } else {
+        conteudo.innerHTML = `<p>Resultados da pesquisa por: <strong>${termo}</strong></p>`;
+      }
+    }
+
+    // Mostrar temas iniciais
+    window.onload = () => mostrarTemas("Matemática");
+  </script>
 </body>
 </html>
