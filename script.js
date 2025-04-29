@@ -7,32 +7,50 @@ const temasPorDisciplina = {
 };
 
 const descricaoTemas = {
-  "Álgebra": "A álgebra é um ramo essencial da Matemática caracterizado pelo uso de símbolos e letras para representar números e expressar relações entre eles. Ela permite a formulação de expressões, resolução de equações e análise de padrões.",
-  "Geometria": "A geometria estuda as propriedades e relações das formas, tamanhos e posições no espaço. Inclui figuras planas como triângulos e círculos, além de sólidos como cubos e esferas.",
-  "Funções": "Funções representam relações entre duas variáveis, onde cada entrada possui uma única saída. São fundamentais para modelar fenômenos matemáticos e científicos.",
-  "Cinemática": "A cinemática é o ramo da Física que estuda o movimento dos corpos sem considerar suas causas. Analisa conceitos como velocidade, aceleração e deslocamento.",
-  "Dinâmica": "A dinâmica estuda as causas do movimento, baseando-se nas leis de Newton. Ela explica como forças afetam o comportamento dos corpos.",
-  "Ondulatória": "A ondulatória analisa os fenômenos das ondas, como propagação, reflexão, interferência e ressonância. Aplica-se a ondas sonoras, luminosas e mecânicas.",
-  "Tabelas periódicas": "A tabela periódica organiza os elementos químicos conforme suas propriedades e número atômico, facilitando o estudo de suas características e reações.",
-  "Ligações químicas": "As ligações químicas explicam como átomos se unem para formar moléculas. Incluem ligações iônicas, covalentes e metálicas.",
-  "Reações químicas": "As reações químicas descrevem transformações em que substâncias iniciais formam novas substâncias, com rearranjos de átomos e liberação ou absorção de energia."
+  "Álgebra": "A álgebra é um ramo essencial da Matemática caracterizado pelo uso de símbolos e letras para representar números e expressar relações entre eles.",
+  "Geometria": "A geometria estuda as propriedades e relações das formas, tamanhos e posições no espaço.",
+  "Funções": "Funções representam relações entre duas variáveis, onde cada entrada possui uma única saída.",
+  "Cinemática": "A cinemática é o ramo da Física que estuda o movimento dos corpos sem considerar suas causas.",
+  "Dinâmica": "A dinâmica estuda as causas do movimento com base nas leis de Newton.",
+  "Ondulatória": "A ondulatória analisa os fenômenos das ondas, como som, luz e vibrações.",
+  "Tabelas periódicas": "A tabela periódica organiza os elementos químicos conforme suas propriedades e número atômico.",
+  "Ligações químicas": "As ligações químicas explicam como os átomos se combinam para formar substâncias.",
+  "Reações químicas": "As reações químicas envolvem a transformação de substâncias em novas substâncias."
 };
 
 function mudarDisciplina(nome) {
   disciplinaAtual = nome;
   document.getElementById("disciplina").innerText = nome;
-  mostrarTemas(nome);
   document.getElementById("conteudo").innerHTML = `<p>Bem-vindo ao conteúdo de ${nome}.</p>`;
+  mostrarTemas(nome);
 }
 
 function mostrarTemas(disciplina) {
   const temasDiv = document.getElementById("temas");
   const temas = temasPorDisciplina[disciplina];
-  temasDiv.innerHTML = temas.map(tema => `
-    <button class="tema-btn" onclick="mostrarTema('${tema}')">${tema}</button>
-  `).join("");
+  temasDiv.innerHTML = temas.map(tema => `<button class="tema-btn" onclick="mostrarTema('${tema}')">${tema}</button>`).join("");
 }
 
 function mostrarTema(tema) {
+  document.getElementById("conteudo").innerHTML = `<h3>${tema}</h3><p>${descricaoTemas[tema]}</p>`;
+}
+
+function mostrarConteudo(tipo) {
+  document.getElementById("conteudo").innerHTML = `<p>${tipo.charAt(0).toUpperCase() + tipo.slice(1)} de ${disciplinaAtual}.</p>`;
+}
+
+function toggleMenu() {
+  const menu = document.getElementById("menuDisciplinas");
+  menu.style.display = menu.style.display === "block" ? "none" : "block";
+}
+
+function pesquisarConteudo(termo) {
   const conteudo = document.getElementById("conteudo");
-  conteudo.innerHTML = `<h3>${tema}</h3><
+  if (termo.trim() === "") {
+    conteudo.innerHTML = `<p>Bem-vindo ao conteúdo de ${disciplinaAtual}.</p>`;
+  } else {
+    conteudo.innerHTML = `<p>Resultados da pesquisa por: <strong>${termo}</strong></p>`;
+  }
+}
+
+window.onload = () => mostrarTemas("Matemática");
