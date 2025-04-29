@@ -17,9 +17,9 @@
     </nav>
 
     <nav class="nav-links">
-      <a href="#" onclick="mostrarConteudo('atividades'); return false;">Atividades</a>
-      <a href="#" onclick="mostrarConteudo('provas'); return false;">Provas</a>
-      <a href="#" onclick="mostrarConteudo('projetos'); return false;">Projetos</a>
+      <a href="#" onclick="mostrarConteudo('atividades')">Atividades</a>
+      <a href="#" onclick="mostrarConteudo('provas')">Provas</a>
+      <a href="#" onclick="mostrarConteudo('projetos')">Projetos</a>
     </nav>
 
     <div class="search-bar">
@@ -32,7 +32,6 @@
     <h2 id="disciplina">Matemática</h2>
 
     <div id="temas"></div>
-
     <div id="conteudo">
       <p>Bem-vindo ao conteúdo de Matemática.</p>
     </div>
@@ -42,56 +41,6 @@
     <p>Desenvolvido pela aluna: Kamila, Lucas Iablonski, Gabriel Lopes, Rafael e Cristopher</p>
   </footer>
 
-  <script>
-    let disciplinaAtual = "Matemática";
-
-    const temasPorDisciplina = {
-      "Matemática": ["Álgebra", "Geometria", "Funções"],
-      "Física": ["Cinemática", "Dinâmica", "Ondulatória"],
-      "Química": ["Tabelas periódicas", "Ligações químicas", "Reações químicas"]
-    };
-
-    function mudarDisciplina(nome) {
-      disciplinaAtual = nome;
-      document.getElementById("disciplina").innerText = nome;
-      mostrarTemas(nome);
-      document.getElementById("conteudo").innerHTML = `<p>Bem-vindo ao conteúdo de ${nome}.</p>`;
-    }
-
-    function mostrarTemas(disciplina) {
-      const temasDiv = document.getElementById("temas");
-      const temas = temasPorDisciplina[disciplina];
-      temasDiv.innerHTML = temas.map(tema => `
-        <button class="tema-btn" onclick="mostrarTema('${disciplina}', '${tema}')">${tema}</button>
-      `).join("");
-    }
-
-    function mostrarTema(disciplina, tema) {
-      const conteudo = document.getElementById("conteudo");
-      conteudo.innerHTML = `<p><strong>${tema}</strong> é um tema importante em <strong>${disciplina}</strong>.</p>`;
-    }
-
-    function mostrarConteudo(tipo) {
-      const conteudo = document.getElementById("conteudo");
-      conteudo.innerHTML = `<p>${tipo.charAt(0).toUpperCase() + tipo.slice(1)} de ${disciplinaAtual}.</p>`;
-    }
-
-    function toggleMenu() {
-      const menu = document.getElementById("menuDisciplinas");
-      menu.style.display = menu.style.display === "block" ? "none" : "block";
-    }
-
-    function pesquisarConteudo(termo) {
-      const conteudo = document.getElementById("conteudo");
-      if (termo.trim() === "") {
-        conteudo.innerHTML = `<p>Bem-vindo ao conteúdo de ${disciplinaAtual}.</p>`;
-      } else {
-        conteudo.innerHTML = `<p>Resultados da pesquisa por: <strong>${termo}</strong></p>`;
-      }
-    }
-
-    // Mostrar temas iniciais
-    window.onload = () => mostrarTemas("Matemática");
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
